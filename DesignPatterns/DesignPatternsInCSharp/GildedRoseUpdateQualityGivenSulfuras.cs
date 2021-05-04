@@ -7,7 +7,7 @@ namespace DesignPatternsInCSharp
     {
         private GildedRose _service;
         private List<Item> _items = new List<Item>();
-        private const int INITIAL_QUALITY = 25;
+        private const int INITIAL_QUALITY = 80;
         private const int INITIAL_SELL_IN = 15;
 
         public GildedRoseUpdateQualityGivenSulfuras()
