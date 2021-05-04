@@ -22,7 +22,7 @@ namespace DesignPatternsInCSharp
         }
 
         [Fact]
-        public void ReduceNormalItemQualityBy1WhenPostiveSellIn()
+        public void ReduceQualityBy1WhenPostiveSellIn()
         {
             _service.UpdateQuality();
             Assert.Equal(INITIAL_QUALITY - 1, _items[0].Quality);
@@ -31,7 +31,7 @@ namespace DesignPatternsInCSharp
         [Theory]
         [InlineData(0)]
         [InlineData(-1)]
-        public void ReduceNormalItemQualityBy2WhenNonPostiveSellIn(int sellInDays)
+        public void ReduceQualityBy2WhenNonPostiveSellIn(int sellInDays)
         {
             _items[0].SellIn = sellInDays;
             _service.UpdateQuality();
@@ -42,7 +42,7 @@ namespace DesignPatternsInCSharp
         [InlineData(1, -1)]
         [InlineData(0, 1)]
         [InlineData(0, -1)]
-        public void DoNotReduceQualityBelowZero(int quality, int sellInDays)
+        public void DoesNotReduceQualityBelowZero(int quality, int sellInDays)
         {
             _items[0].SellIn = sellInDays;
             _items[0].Quality = quality;
@@ -51,14 +51,14 @@ namespace DesignPatternsInCSharp
         }
 
         [Fact]
-        public void ReduceNormalItemSellInBy1()
+        public void ReduceSellInBy1()
         {
             _service.UpdateQuality();
             Assert.Equal(INITIAL_SELL_IN - 1, _items[0].SellIn);
         }
 
         [Fact]
-        public void ReduceNormalItemSellInBelowZero()
+        public void ReduceSellInBelowZero()
         {
             _items[0].SellIn = 0;
             _service.UpdateQuality();

@@ -26,7 +26,7 @@ namespace DesignPatternsInCSharp
         [InlineData(12)]
         [InlineData(13)]
         [InlineData(20)]
-        public void IncreaseBackstagePassesQualityBy1WhenSellInOver10days(int sellInDays)
+        public void IncreaseQualityBy1WhenSellInOver10days(int sellInDays)
         {
             _items[0].SellIn = sellInDays;
             _service.UpdateQuality();
@@ -39,7 +39,7 @@ namespace DesignPatternsInCSharp
         [InlineData(8)]
         [InlineData(9)]
         [InlineData(10)]
-        public void IncreaseBackstagePassesQualityBy2WhenSellIn6to10days(int sellInDays)
+        public void IncreaseQualityBy2WhenSellIn6to10days(int sellInDays)
         {
             _items[0].SellIn = sellInDays;
             _service.UpdateQuality();
@@ -52,7 +52,7 @@ namespace DesignPatternsInCSharp
         [InlineData(3)]
         [InlineData(4)]
         [InlineData(5)]
-        public void IncreaseBackstagePassesQualityBy3WhenSellIn1to5Days(int sellInDays)
+        public void IncreaseQualityBy3WhenSellIn1to5Days(int sellInDays)
         {
             _items[0].SellIn = sellInDays;
             _service.UpdateQuality();
@@ -60,7 +60,7 @@ namespace DesignPatternsInCSharp
         }
 
         [Fact]
-        public void ZeroBackstagePassesQualityWhenSellIn0Days()
+        public void ZeroQualityWhenSellIn0Days()
         {
             _items[0].SellIn = 0;
             _service.UpdateQuality();
@@ -76,7 +76,7 @@ namespace DesignPatternsInCSharp
         [InlineData(49, 11)]
         [InlineData(48, 1)]
         [InlineData(47, 5)]
-        public void DoNotIncreaseQualityPast50(int quality, int sellInDays)
+        public void DoesNotIncreaseQualityPast50(int quality, int sellInDays)
         {
             _items[0].SellIn = sellInDays;
             _items[0].Quality = quality;
@@ -85,14 +85,14 @@ namespace DesignPatternsInCSharp
         }
 
         [Fact]
-        public void ReduceBackstagePassesSellInBy1()
+        public void ReduceSellInBy1()
         {
             _service.UpdateQuality();
             Assert.Equal(INITIAL_SELL_IN - 1, _items[0].SellIn);
         }
 
         [Fact]
-        public void ReduceBackstagePassesSellInBelowZero()
+        public void ReduceSellInBelowZero()
         {
             _items[0].SellIn = 0;
             _service.UpdateQuality();

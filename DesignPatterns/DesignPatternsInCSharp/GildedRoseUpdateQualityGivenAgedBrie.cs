@@ -23,7 +23,7 @@ namespace DesignPatternsInCSharp
         }
 
         [Fact]
-        public void IncreaseAgedBrieQualityBy1WhenPositiveSellIn()
+        public void IncreaseQualityBy1WhenPositiveSellIn()
         {
             _service.UpdateQuality();
             Assert.Equal(INITIAL_QUALITY + 1, _items[0].Quality);
@@ -32,7 +32,7 @@ namespace DesignPatternsInCSharp
         [Theory]
         [InlineData(0)]
         [InlineData(-1)]
-        public void IncreaseAgedBrieQualityBy2WhenNonPostiveSellIn(int sellIn)
+        public void IncreaseQualityBy2WhenNonPostiveSellIn(int sellIn)
         {
             _items[0].SellIn = sellIn;
             _service.UpdateQuality();
@@ -40,7 +40,7 @@ namespace DesignPatternsInCSharp
         }
 
         [Fact]
-        public void DoNotIncreaseQualityPast50()
+        public void DoesNotIncreaseQualityPast50()
         {
             _items[0].Quality = 50;
             _service.UpdateQuality();
@@ -48,14 +48,14 @@ namespace DesignPatternsInCSharp
         }
 
         [Fact]
-        public void ReduceAgedBrieSellInBy1()
+        public void ReduceSellInBy1()
         {
             _service.UpdateQuality();
             Assert.Equal(INITIAL_SELL_IN - 1, _items[0].SellIn);
         }
 
         [Fact]
-        public void ReduceAgedBrieSellInBelowZero()
+        public void ReduceSellInBelowZero()
         {
             _items[0].SellIn = 0;
             _service.UpdateQuality();
