@@ -24,19 +24,25 @@ namespace DesignPatternsInCSharp
         [Fact]
         public void DoesNotIncreaseQualityWhenPostiveSellIn()
         {
-
+            _service.UpdateQuality();
+            Assert.Equal(INITIAL_QUALITY, _items[0].Quality);
         }
 
-        [Fact]
-        public void DoesNotIncreaseQualityWhenNonPostiveSellIn()
+        [Theory]
+        [InlineData(0)]
+        [InlineData(-1)]
+        public void DoesNotIncreaseQualityWhenNonPostiveSellIn(int sellInDays)
         {
-
+            _items[0].SellIn = sellInDays;
+            _service.UpdateQuality();
+            Assert.Equal(INITIAL_QUALITY, _items[0].Quality);
         }
 
         [Fact]
         public void DoesNotIncreaseSellIn()
         {
-
+            _service.UpdateQuality();
+            Assert.Equal(INITIAL_SELL_IN, _items[0].SellIn);
         }
     }
 }
