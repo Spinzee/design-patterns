@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace csharpcore
+namespace DesignPatternsInCSharp
 {
     public class GildedRose
     {
@@ -87,3 +87,4 @@ namespace csharpcore
         }
     }
 }
+

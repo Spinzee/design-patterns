@@ -1,4 +1,4 @@
-﻿namespace csharpcore
+﻿namespace DesignPatternsInCSharp
 {
     public class Item
     {
