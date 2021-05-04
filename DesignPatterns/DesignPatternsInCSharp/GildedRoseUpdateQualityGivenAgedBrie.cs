@@ -29,10 +29,12 @@ namespace DesignPatternsInCSharp
             Assert.Equal(INITIAL_QUALITY + 1, _items[0].Quality);
         }
 
-        [Fact]
-        public void IncreaseAgedBrieQualityBy2WhenNegativeSellIn()
+        [Theory]
+        [InlineData(0)]
+        [InlineData(-1)]
+        public void IncreaseAgedBrieQualityBy2WhenNonPostiveSellIn(int sellIn)
         {
-            _items[0].SellIn = -1;
+            _items[0].SellIn = sellIn;
             _service.UpdateQuality();
             Assert.Equal(INITIAL_QUALITY + 2, _items[0].Quality);
         }
