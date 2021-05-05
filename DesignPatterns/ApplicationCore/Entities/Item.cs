@@ -1,4 +1,4 @@
-﻿namespace DesignPatternsInCSharp
+﻿namespace DesignPatternsInCSharp.ApplicationCore.Entities
 {
     public class Item
     {

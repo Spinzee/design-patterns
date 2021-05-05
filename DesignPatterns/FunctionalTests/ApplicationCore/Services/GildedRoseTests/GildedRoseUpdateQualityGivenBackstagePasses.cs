@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using DesignPatternsInCSharp.ApplicationCore.Entities;
+using DesignPatternsInCSharp.ApplicationCore.Services;
+using System.Collections.Generic;
 using Xunit;
 
-namespace DesignPatternsInCSharp
+namespace DesignPatternsInCSharp.UnitTests.ApplicationCore.Services.GildedRoseTests
 {
     public class GildedRoseUpdateQualityGivenBackstagePasses
     {

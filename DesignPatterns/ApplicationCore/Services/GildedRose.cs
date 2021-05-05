@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using DesignPatternsInCSharp.ApplicationCore.Entities;
+using System.Collections.Generic;
 
-namespace DesignPatternsInCSharp
+namespace DesignPatternsInCSharp.ApplicationCore.Services
 {
     public class GildedRose
     {
