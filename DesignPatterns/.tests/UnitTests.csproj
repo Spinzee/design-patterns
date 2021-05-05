@@ -15,11 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ApplicationCore\Proxies\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\ApplicationCore\ApplicationCore.csproj" />
+    <ProjectReference Include="..\src\ApplicationCore\ApplicationCore.csproj" />
   </ItemGroup>
 
 </Project>
