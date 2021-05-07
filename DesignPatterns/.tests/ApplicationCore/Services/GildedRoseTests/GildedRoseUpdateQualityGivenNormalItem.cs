@@ -1,4 +1,5 @@
 ﻿using DesignPatternsInCSharp.ApplicationCore.Entities;
+using DesignPatternsInCSharp.ApplicationCore.Proxies;
 using DesignPatternsInCSharp.ApplicationCore.Services;
 using System.Collections.Generic;
 using Xunit;
@@ -8,7 +9,7 @@ namespace DesignPatternsInCSharp.UnitTests.ApplicationCore.Services.GildedRoseTe
     public class GildedRoseUpdateQualityGivenNormalItem
     {
         private GildedRose _service;
-        private List<Item> _items = new List<Item>();
+        private List<ItemProxy> _items = new List<ItemProxy>();
         private const int INITIAL_QUALITY = 14;
         private const int INITIAL_SELL_IN = 25;
 
@@ -18,9 +19,9 @@ namespace DesignPatternsInCSharp.UnitTests.ApplicationCore.Services.GildedRoseTe
             _service = new GildedRose(_items);
         }
 
-        private Item GetNormalItem()
+        private ItemProxy GetNormalItem()
         {
-            return new Item { Name = "Normal Item", Quality = INITIAL_QUALITY, SellIn = INITIAL_SELL_IN };
+            return new ItemProxy(new Item { Name = "Normal Item", Quality = INITIAL_QUALITY, SellIn = INITIAL_SELL_IN });
         }
 
         [Fact]

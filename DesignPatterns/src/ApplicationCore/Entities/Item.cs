@@ -1,6 +1,8 @@
-﻿namespace DesignPatternsInCSharp.ApplicationCore.Entities
+﻿using ApplicationCore.Interfaces;
+
+namespace DesignPatternsInCSharp.ApplicationCore.Entities
 {
-    public class Item
+    public class Item : IItem
     {
         public string Name { get; set; }
         public int SellIn { get; set; }
