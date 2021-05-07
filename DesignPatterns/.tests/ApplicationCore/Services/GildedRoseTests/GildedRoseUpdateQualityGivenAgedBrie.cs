@@ -1,7 +1,5 @@
-﻿using DesignPatternsInCSharp.ApplicationCore.Entities;
-using DesignPatternsInCSharp.ApplicationCore.Proxies;
+﻿using DesignPatternsInCSharp.ApplicationCore.Proxies;
 using DesignPatternsInCSharp.ApplicationCore.Services;
-using System;
 using System.Collections.Generic;
 using Xunit;
 
@@ -22,7 +20,7 @@ namespace DesignPatternsInCSharp.UnitTests.ApplicationCore.Services.GildedRoseTe
 
         private ItemProxy GetAgedBrie()
         {
-            return new ItemProxy(new Item { Name = "Aged Brie", Quality = INITIAL_QUALITY, SellIn = INITIAL_SELL_IN });
+            return new ItemProxy{ Name = "Aged Brie", Quality = INITIAL_QUALITY, SellIn = INITIAL_SELL_IN };
         }
 
         [Fact]

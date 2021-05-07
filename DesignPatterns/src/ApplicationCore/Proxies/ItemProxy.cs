@@ -1,4 +1,5 @@
 ﻿using ApplicationCore.Interfaces;
+using DesignPatternsInCSharp.ApplicationCore.Entities;
 
 namespace DesignPatternsInCSharp.ApplicationCore.Proxies
 {
@@ -9,7 +10,7 @@ namespace DesignPatternsInCSharp.ApplicationCore.Proxies
     /// </summary>
     public class ItemProxy : IItem
     {
-        private IItem _item;
+        private readonly Item _item = new Item();
 
         public int SellIn
         {
@@ -27,12 +28,7 @@ namespace DesignPatternsInCSharp.ApplicationCore.Proxies
         {
             get { return _item.Quality; }
             set { _item.Quality = value; }
-        }
-
-        public ItemProxy(IItem item)
-        {
-            _item = item;
-        }        
+        }       
 
         public void IncrementQuality()
         {

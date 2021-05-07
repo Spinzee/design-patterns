@@ -1,5 +1,4 @@
-﻿using DesignPatternsInCSharp.ApplicationCore.Entities;
-using DesignPatternsInCSharp.ApplicationCore.Proxies;
+﻿using DesignPatternsInCSharp.ApplicationCore.Proxies;
 using DesignPatternsInCSharp.ApplicationCore.Services;
 using System.Collections.Generic;
 using Xunit;
@@ -21,7 +20,7 @@ namespace DesignPatternsInCSharp.UnitTests.ApplicationCore.Services.GildedRoseTe
 
         private ItemProxy GetConjurdedItem()
         {
-            return new ItemProxy(new Item { Name = "Conjured hat", Quality = INITIAL_QUALITY, SellIn = INITIAL_SELL_IN });
+            return new ItemProxy { Name = "Conjured hat", Quality = INITIAL_QUALITY, SellIn = INITIAL_SELL_IN };
         }
 
         [Fact]
