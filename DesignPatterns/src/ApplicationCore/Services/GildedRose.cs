@@ -1,13 +1,14 @@
-﻿using DesignPatternsInCSharp.ApplicationCore.Proxies;
+﻿using ApplicationCore.Interfaces;
+using DesignPatternsInCSharp.ApplicationCore.Proxies;
 using System.Collections.Generic;
 
 namespace DesignPatternsInCSharp.ApplicationCore.Services
 {
-    public class GildedRose
+    public class GildedRose : IGildedRose
     {
-        private List<ItemProxy> _items;
+        private readonly IList<IItem> _items;
 
-        public GildedRose(List<ItemProxy> items)
+        public GildedRose(IList<IItem> items)
         {
             _items = items;
         }
@@ -74,7 +75,7 @@ namespace DesignPatternsInCSharp.ApplicationCore.Services
         {
             for (var i = 0; i < _items.Count; i++)
             {
-                UpdateQuality(_items[i]);
+                UpdateQuality((ItemProxy)_items[i]);
             }
         }
     }

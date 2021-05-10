@@ -1,4 +1,5 @@
-﻿using DesignPatternsInCSharp.ApplicationCore.Proxies;
+﻿using ApplicationCore.Interfaces;
+using DesignPatternsInCSharp.ApplicationCore.Proxies;
 using DesignPatternsInCSharp.ApplicationCore.Services;
 using System.Collections.Generic;
 using Xunit;
@@ -7,7 +8,7 @@ namespace DesignPatternsInCSharp.UnitTests.ApplicationCore.Services.GildedRoseTe
 {
     public class GildedRoseUpdateQualityGiveConjuredItem
     {
-        private List<ItemProxy> _items = new List<ItemProxy>();
+        private IList<IItem> _items = new List<IItem>();
         private GildedRose _service;
         private const int INITIAL_QUALITY = 25;
         private const int INITIAL_SELL_IN = 10;

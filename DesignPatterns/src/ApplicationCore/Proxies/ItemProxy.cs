@@ -6,7 +6,7 @@ namespace DesignPatternsInCSharp.ApplicationCore.Proxies
     /// <summary>
     /// Item Proxy.
     /// Use for adding additional behaviours to a class 
-    /// without modifying it. 
+    /// or model without modifying it. (Smart Proxy)
     /// </summary>
     public class ItemProxy : IItem
     {
@@ -28,7 +28,7 @@ namespace DesignPatternsInCSharp.ApplicationCore.Proxies
         {
             get { return _item.Quality; }
             set { _item.Quality = value; }
-        }       
+        }
 
         public void IncrementQuality()
         {
