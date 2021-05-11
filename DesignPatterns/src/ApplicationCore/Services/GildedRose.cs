@@ -1,4 +1,5 @@
 ﻿using ApplicationCore.Interfaces;
+using ApplicationCore.Rules;
 using DesignPatternsInCSharp.ApplicationCore.Proxies;
 using System.Collections.Generic;
 
@@ -14,61 +15,44 @@ namespace DesignPatternsInCSharp.ApplicationCore.Services
         }
 
         public void UpdateQuality(ItemProxy item)
-        { 
-            switch (item.Name)
+        {
+            //TODO turn this into a rules engine
+
+            var agedBrieRule = new AgedBrieRule();
+            var sulfurasRule = new SulfurasRule();
+            var backstageRule = new BackstagePassRule();
+            var conjuredRule = new ConjuredRule();
+            var normalRule = new NormalRule();
+
+            if (agedBrieRule.IsMatch(item))
             {
-                case "Aged Brie":
-                    item.IncrementQuality();
+                agedBrieRule.UpdateItem(item);
+                return;
+            }
 
-                    if (item.SellIn <= 0)
-                    {
-                        item.IncrementQuality();
-                    }
-                    item.DecreaseSellIn();
-                    break;
-                case "Sulfuras, Hand of Ragnaros":
-                    break;
-                case "Backstage passes to a TAFKAL80ETC concert":
-                    item.IncrementQuality();
+            if (sulfurasRule.IsMatch(item))
+            {
+                sulfurasRule.UpdateItem(item);
+                return;
+            }
 
-                    if (item.SellIn <= 10)
-                    {
-                        item.IncrementQuality();
-                    }
-                    if (item.SellIn <= 5)
-                    {
-                        item.IncrementQuality();
-                    }
-                    if (item.SellIn <= 0)
-                    {
-                        item.ResetQuality();
-                    }
+            if (backstageRule.IsMatch(item))
+            {
+                backstageRule.UpdateItem(item);
+                return;
+            }
 
-                    item.DecreaseSellIn();
-                    break;
-                case "Conjured hat":
-                    item.DecreaseQuality();
-                    item.DecreaseQuality();
+            if (conjuredRule.IsMatch(item))
+            {
+                conjuredRule.UpdateItem(item);
+                return;
+            }
 
-                    if (item.SellIn <= 0)
-                    {
-                        item.DecreaseQuality();
-                        item.DecreaseQuality();
-                    }
-
-                    item.DecreaseSellIn();
-                    break;
-                default:
-                    item.DecreaseQuality();
-
-                    if (item.SellIn <= 0)
-                    {
-                        item.DecreaseQuality();
-                    }
-
-                    item.DecreaseSellIn();
-                    break;
-            }            
+            if (normalRule.IsMatch(item))
+            {
+                normalRule.UpdateItem(item);
+                return;
+            }
         }
 
         public void UpdateQuality()
