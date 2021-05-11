@@ -16,42 +16,23 @@ namespace DesignPatternsInCSharp.ApplicationCore.Services
 
         public void UpdateQuality(ItemProxy item)
         {
-            //TODO turn this into a rules engine
-
-            var agedBrieRule = new AgedBrieRule();
-            var sulfurasRule = new SulfurasRule();
-            var backstageRule = new BackstagePassRule();
-            var conjuredRule = new ConjuredRule();
-            var normalRule = new NormalRule();
-
-            if (agedBrieRule.IsMatch(item))
+            var rules = new List<IRule>
             {
-                agedBrieRule.UpdateItem(item);
-                return;
-            }
+                new AgedBrieRule(),
+                new SulfurasRule(),
+                new BackstagePassRule(),
+                new ConjuredRule(),
+                new ConjuredRule(),
+                new NormalRule()
+            };
 
-            if (sulfurasRule.IsMatch(item))
+            foreach (var rule in rules)
             {
-                sulfurasRule.UpdateItem(item);
-                return;
-            }
-
-            if (backstageRule.IsMatch(item))
-            {
-                backstageRule.UpdateItem(item);
-                return;
-            }
-
-            if (conjuredRule.IsMatch(item))
-            {
-                conjuredRule.UpdateItem(item);
-                return;
-            }
-
-            if (normalRule.IsMatch(item))
-            {
-                normalRule.UpdateItem(item);
-                return;
+                if (rule.IsMatch(item))
+                {
+                    rule.UpdateItem(item);
+                    break;
+                }
             }
         }
 
