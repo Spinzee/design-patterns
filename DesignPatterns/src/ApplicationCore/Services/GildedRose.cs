@@ -1,5 +1,4 @@
 ﻿using ApplicationCore.Interfaces;
-using ApplicationCore.Rules;
 using DesignPatternsInCSharp.ApplicationCore.Proxies;
 using System.Collections.Generic;
 
@@ -8,25 +7,17 @@ namespace DesignPatternsInCSharp.ApplicationCore.Services
     public class GildedRose : IGildedRose
     {
         private readonly IList<IItem> _items;
+        private readonly IList<IRule> _rules;
 
-        public GildedRose(IList<IItem> items)
+        public GildedRose(IList<IItem> items, IList<IRule> rules)
         {
             _items = items;
+            _rules = rules;
         }
 
         public void UpdateQuality(ItemProxy item)
         {
-            var rules = new List<IRule>
-            {
-                new AgedBrieRule(),
-                new SulfurasRule(),
-                new BackstagePassRule(),
-                new ConjuredRule(),
-                new ConjuredRule(),
-                new NormalRule()
-            };
-
-            foreach (var rule in rules)
+            foreach (var rule in _rules)
             {
                 if (rule.IsMatch(item))
                 {

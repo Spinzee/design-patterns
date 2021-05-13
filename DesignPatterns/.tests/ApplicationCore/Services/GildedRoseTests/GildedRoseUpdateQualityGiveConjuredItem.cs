@@ -1,12 +1,14 @@
 ﻿using ApplicationCore.Interfaces;
+using ApplicationCore.Rules;
 using DesignPatternsInCSharp.ApplicationCore.Proxies;
 using DesignPatternsInCSharp.ApplicationCore.Services;
 using System.Collections.Generic;
+using System.Data;
 using Xunit;
 
 namespace DesignPatternsInCSharp.UnitTests.ApplicationCore.Services.GildedRoseTests
 {
-    public class GildedRoseUpdateQualityGiveConjuredItem
+    public class GildedRoseUpdateQualityGiveConjuredItem : TestBase
     {
         private IList<IItem> _items = new List<IItem>();
         private GildedRose _service;
@@ -15,9 +17,9 @@ namespace DesignPatternsInCSharp.UnitTests.ApplicationCore.Services.GildedRoseTe
 
         public GildedRoseUpdateQualityGiveConjuredItem()
         {
-            _items.Add(GetConjurdedItem());
-            _service = new GildedRose(_items);
-        }
+            _items.Add(GetConjurdedItem());            
+            _service = new GildedRose(_items, GetRules());
+        }        
 
         private ItemProxy GetConjurdedItem()
         {

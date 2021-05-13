@@ -1,4 +1,5 @@
 using ApplicationCore.Interfaces;
+using ApplicationCore.Rules;
 using DesignPatternsInCSharp.ApplicationCore.Proxies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -16,6 +17,12 @@ namespace Web
         {
             services.AddScoped<IItem, ItemProxy>();
             services.AddScoped<IGildedRose, IGildedRose>();
+
+            services.AddScoped<IRule, AgedBrieRule>();
+            services.AddScoped<IRule, BackstagePassRule>();
+            services.AddScoped<IRule, ConjuredRule>();
+            services.AddScoped<IRule, SulfurasRule>();
+            services.AddScoped<IRule, NormalRule>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -6,7 +6,7 @@ using Xunit;
 
 namespace DesignPatternsInCSharp.UnitTests.ApplicationCore.Services.GildedRoseTests
 {
-    public class GildedRoseUpdateQualityGivenSulfuras
+    public class GildedRoseUpdateQualityGivenSulfuras : TestBase
     {
         private GildedRose _service;
         private IList<IItem> _items = new List<IItem>();
@@ -16,7 +16,7 @@ namespace DesignPatternsInCSharp.UnitTests.ApplicationCore.Services.GildedRoseTe
         public GildedRoseUpdateQualityGivenSulfuras()
         {
             _items.Add(GetSulfurasItem());
-            _service = new GildedRose(_items);
+            _service = new GildedRose(_items, GetRules());
         }
 
         private ItemProxy GetSulfurasItem()
